@@ -44,6 +44,15 @@ namespace simpleCalc
                             {
                                 value += ch;
                             }
+                            else
+                            {
+                                if (value != "")
+                                {
+                                    result.Add(value);
+                                    value = "";
+                                }
+                                determinesStack(ref result, ref stack, enterLine[i]);
+                            }
                         }
                         else
                         {
@@ -80,28 +89,39 @@ namespace simpleCalc
 
             //MARK: calculating
             var numStack = new Stack<double>();
-            for (int i = 0; i < result.Count; i++)
+            bool flag = false;
+            for (int i = 0; i < result.Count && flag == false; i++)
             {
                 switch (result[i])
                 {
-                    case string str when IsDigit(str[0]) || ((str[0] == '-') && (IsDigit(str[1]))):
+                    case string str when (IsDigit(str[0]) || (str.Length > 1)):
                         numStack.Push(Convert.ToDouble(str));
                         break;
                     case string str when (IsOperation(str[0]) && (str[0] != '(') && (str[0] != ')')):
-                        calculateResult(ref numStack, str[0]);
+                        calculateResult(ref numStack, ref flag, str[0]);
                         break;
                     default:
                         Console.WriteLine("Error: the misspelled expression. Check the input.");
                         //Console.ReadKey();
                         return;
-                }
+                }                
             }
-            Console.WriteLine("Ответ: " + numStack.Peek());
+            if (flag == false)
+            {
+                Console.WriteLine($"Ответ: {numStack.Peek()}");
+            }
+            else
+            {
+                Console.WriteLine("All's bad, look for error in input.");
+            }
+            
+
+
         }
 
 
 
-        private static void calculateResult(ref Stack<double> ourStack, char currOperation)
+        private static void calculateResult(ref Stack<double> ourStack, ref bool flag, char currOperation)
         {
             try
             {
@@ -111,7 +131,8 @@ namespace simpleCalc
                     var preLastNum = ourStack.Pop();
                     if ((lastNum == 0) && (currOperation == '/'))
                     {
-                        throw new Exception("To zero cannot be split.");
+                        flag = true;
+                        throw new DivideByZeroException();
                     }
                     switch (currOperation)
                     {
@@ -132,6 +153,7 @@ namespace simpleCalc
                 }
                 else
                 {
+                    flag = true;
                     throw new Exception("Stack have one element.");
                 }
             }

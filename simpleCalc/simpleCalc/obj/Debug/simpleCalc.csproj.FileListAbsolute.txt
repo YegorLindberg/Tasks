@@ -5,3 +5,10 @@ C:\Users\Admin\source\repos\simpleCalc\simpleCalc\obj\Debug\simpleCalc.csprojAss
 C:\Users\Admin\source\repos\simpleCalc\simpleCalc\obj\Debug\simpleCalc.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\simpleCalc\simpleCalc\obj\Debug\simpleCalc.exe
 C:\Users\Admin\source\repos\simpleCalc\simpleCalc\obj\Debug\simpleCalc.pdb
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\obj\Debug\simpleCalc.csprojAssemblyReference.cache
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\obj\Debug\simpleCalc.csproj.CoreCompileInputs.cache
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\obj\Debug\simpleCalc.exe
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\obj\Debug\simpleCalc.pdb
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\bin\Debug\simpleCalc.exe.config
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\bin\Debug\simpleCalc.exe
+C:\GitHub\Tasks-repo\simpleCalc\simpleCalc\bin\Debug\simpleCalc.pdb
