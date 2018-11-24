@@ -29,13 +29,26 @@ namespace simpleCalc
                     case char ch when IsDigit(ch):
                         value += enterLine[i];
                         break;
-                    case char ch when IsOperation(ch):
+                    case char ch when (IsOperation(ch) && (ch != '-')):
                         if (value != "")
                         {
                             result.Add(value);
                             value = "";
                         }
                         determinesStack(ref result, ref stack, enterLine[i]);
+                        break;
+                    case char ch when ch == '-':
+                        if (i > 0)
+                        {
+                            if (IsOperation(enterLine[i - 1]) && (enterLine[i - 1] != ')'))
+                            {
+                                value += ch;
+                            }
+                        }
+                        else
+                        {
+                            value += ch;                           
+                        }
                         break;
                     default:
                         Console.WriteLine("Error: discovered an unidentified symbol.");
@@ -71,7 +84,7 @@ namespace simpleCalc
             {
                 switch (result[i])
                 {
-                    case string str when IsDigit(str[0]):
+                    case string str when IsDigit(str[0]) || ((str[0] == '-') && (IsDigit(str[1]))):
                         numStack.Push(Convert.ToDouble(str));
                         break;
                     case string str when (IsOperation(str[0]) && (str[0] != '(') && (str[0] != ')')):
