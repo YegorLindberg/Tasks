@@ -14,14 +14,24 @@ namespace simpleCalc
             var stack = new List<char>();
 
             string enterLine = "";
-            for (int i = 0; i < args.Length; i++)
+            if (args.Length != 0)
             {
-                enterLine += args[i];
+                for (int i = 0; i < args.Length; i++)
+                {
+                    enterLine += args[i];
+                }
+                Console.WriteLine(enterLine);
+            } 
+            else
+            {
+                Console.WriteLine("Empty input string.");
+                return;
             }
-            Console.WriteLine(enterLine);
+            
 
             //MARK: conversion to Postfix form
             string value = "";
+           
             for (int i = 0; i < enterLine.Length; i++)
             {
                 switch (enterLine[i])
